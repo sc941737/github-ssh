@@ -1,0 +1,11 @@
+#!/bin/bash
+
+name="$1"
+email="$2"
+keyfile=$HOME/.ssh/id_ed25519
+sudo apt install xclip -yy
+git config --global user.name "$name"
+git config --global user.email "$email"
+ssh-keygen -t ed25519 -f $keyfile -q -N ""
+eval "$(ssh-agent -s)" && ssh-add $keyfile
+xclip -selection clipboard $keyfile
