@@ -8,4 +8,4 @@ git config --global user.name "$name"
 git config --global user.email "$email"
 ssh-keygen -t ed25519 -f $keyfile -q -N ""
 eval "$(ssh-agent -s)" && ssh-add $keyfile
-xclip -selection clipboard $keyfile
+xclip -selection clipboard "$keyfile.pub"
